@@ -193,7 +193,7 @@ describe('Prefixer', function() {
     heimdall.start({ name: 'somemthing-else' });
     heimdall.start({ name: 'hello' });
 
-    expect(prefixer.prefix()).to.equal('[hello] ');
+    expect(prefixer.prefix()).to.match(/\[hello#\d\] /);
   });
 
   it('ignores the heimdall root node', function() {
@@ -210,7 +210,7 @@ describe('Prefixer', function() {
     let prefixer = new Prefixer();
     prefixer.matcher = (id) => /[ace]/.test(id.name);
 
-    expect(prefixer.prefix()).to.equal('[a -> c -> e] ');
+    expect(prefixer.prefix()).to.match(/\[a#\d -> c#\d -> e#\d\] /);
   });
 
   it('collects nodes from path to root, limited by `depth`', function() {
@@ -223,7 +223,7 @@ describe('Prefixer', function() {
     let prefixer = new Prefixer();
     prefixer.depth = 4;
 
-    expect(prefixer.prefix()).to.equal('[b -> c -> d -> e] ');
+    expect(prefixer.prefix()).to.match(/\[b#\d -> c#\d -> d#\d -> e#\d\] /);
   });
 
   it('defaults depth to 3', function() {
@@ -235,6 +235,6 @@ describe('Prefixer', function() {
 
     let prefixer = new Prefixer();
 
-    expect(prefixer.prefix()).to.equal('[c -> d -> e] ');
+    expect(prefixer.prefix()).to.match(/\[c#\d -> d#\d -> e#\d\] /);
   });
 });

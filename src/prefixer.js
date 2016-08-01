@@ -22,7 +22,7 @@ export default class Prefixer {
       }
 
       if (this.matcher(node.id)) {
-        parts.push(node.id.name);
+        parts.push(`${node.id.name}#${node._id}`);
       }
 
       node = node.parent;
