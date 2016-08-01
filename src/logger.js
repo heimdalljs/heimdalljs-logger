@@ -43,11 +43,11 @@ class Logger {
 function noop() {}
 
 export let NULL_LOGGER = {
-  trace: noop,
-  debug: noop,
-  info: noop,
-  warn: noop,
-  error: noop,
+  trace() { },
+  debug() { },
+  info() { },
+  warn() { },
+  error() { }
 };
 
 export default Logger;
