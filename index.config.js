@@ -7,6 +7,9 @@ export default {
   entry: 'src/index.js',
   moduleName: 'heimdalljs-logger',
   format: 'cjs',
+  external: [
+    'heimdalljs',
+  ],
   plugins: [
     babel({ exclude: 'node_modules/**' }),
     nodeResolve({ jsnext: true, main: true }),
