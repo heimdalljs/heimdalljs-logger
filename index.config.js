@@ -5,7 +5,7 @@ import json from 'rollup-plugin-json';
 
 export default {
   entry: 'src/index.js',
-  moduleName: 'heimdall',
+  moduleName: 'heimdalljs-logger',
   format: 'cjs',
   plugins: [
     babel({ exclude: 'node_modules/**' }),

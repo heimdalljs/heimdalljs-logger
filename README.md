@@ -3,7 +3,7 @@
 ### With no Heimdall Tree
 
 ```js
-var logger = require('heimdall-logger')('foo');
+var logger = require('heimdalljs-logger')('foo');
 
 logger.trace('trace message');
 logger.debug('debug message');
