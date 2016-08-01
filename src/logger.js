@@ -1,5 +1,5 @@
 import debugGen from 'debug';
-import { defaultPrefixer as prefixer } from './prefixer';
+import Prefixer from './prefixer';
 
 export const [
   ERROR, WARN, INFO, DEBUG, TRACE
@@ -10,7 +10,7 @@ export default class Logger {
     this.level = level;
 
     this._print = debugGen(namespace);
-    this._prefixer = prefixer;
+    this._prefixer = new Prefixer();
   }
 
   _message(level, msg, ...args) {

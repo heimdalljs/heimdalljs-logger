@@ -1,4 +1,3 @@
-import { defaultPrefixer } from './prefixer';
 import debug from 'debug';
 import {
   ERROR, WARN, INFO, DEBUG, TRACE,
@@ -37,5 +36,4 @@ export default function logGenerator(namespace) {
   }
 }
 
-logGenerator.config = defaultPrefixer;
 logGenerator.debugLevel = undefined;

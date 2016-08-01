@@ -1,26 +1,18 @@
 import heimdall from 'heimdalljs';
 
-class PrefixerSchema {
-  constructor() {
-    this.prefix = undefined;
-  }
-}
+const MATCHER = n => true;
 
 export default class Prefixer {
   constructor() {
-    this.matcher = (n) => true;
-    this.depth = 3;
+    let logConfig = heimdall.configFor('logging');
+
+    this.matcher = logConfig.matcher || MATCHER;
+    this.depth = typeof logConfig.depth === 'number' ? logConfig.depth : 3;
   }
 
+  // TODO: possibly memoize this using a WeakMap
+  //  currently we compute prefix on every call to `log`
   prefix() {
-    let meta = heimdall.statsFor('logging');
-    if (!meta.prefix) {
-      this._computePrefix(meta);
-    }
-    return meta.prefix;
-  }
-
-  _computePrefix(meta) {
     let parts = [];
     let node = heimdall.current;
 
@@ -36,14 +28,6 @@ export default class Prefixer {
       node = node.parent;
     }
 
-    meta.prefix = parts.length > 0 ? `[${parts.reverse().join(' -> ')}] ` : '';
-  }
-
-  static _registerMonitor() {
-    heimdall.registerMonitor('logging', PrefixerSchema);
+    return parts.length > 0 ? `[${parts.reverse().join(' -> ')}] ` : '';
   }
 }
-
-Prefixer._registerMonitor();
-
-export const defaultPrefixer = new Prefixer();

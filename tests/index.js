@@ -111,10 +111,6 @@ describe('logGenerator', function() {
     logGenerator.debugLevel = undefined;
     expect(logGenerator('super-duper:project').level).to.equal(INFO);
   });
-
-  it('exposes the global prefixer as `config`', function() {
-    expect(logGenerator.config).to.equal(defaultPrefixer);
-  });
 });
 
 describe('NullLogger', function() {
@@ -183,7 +179,21 @@ describe('Logger', function() {
 describe('Prefixer', function() {
   beforeEach( function() {
     heimdall._reset();
-    Prefixer._registerMonitor();
+  });
+
+  it("reads matcher and depth from heimdall's logging config if present", function() {
+    let logConfig = heimdall.configFor('logging');
+
+    logConfig.depth = 1;
+    logConfig.matcher = (id) => id.name == 'hello';
+
+    let prefixer = new Prefixer();
+
+    heimdall.start({ name: 'hello' });
+    heimdall.start({ name: 'somemthing-else' });
+    heimdall.start({ name: 'hello' });
+
+    expect(prefixer.prefix()).to.equal('[hello] ');
   });
 
   it('ignores the heimdall root node', function() {
