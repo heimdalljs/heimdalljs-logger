@@ -5,7 +5,7 @@ export const [
   ERROR, WARN, INFO, DEBUG, TRACE
 ] = [ 0, 1, 2, 3, 4 ];
 
-class Logger {
+export default class Logger {
   constructor(namespace, level) {
     this.level = level;
 
@@ -47,5 +47,3 @@ export let NULL_LOGGER = {
   warn() { },
   error() { }
 };
-
-export default Logger;
