@@ -40,8 +40,6 @@ class Logger {
   }
 }
 
-function noop() {}
-
 export let NULL_LOGGER = {
   trace() { },
   debug() { },
