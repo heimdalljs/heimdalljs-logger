@@ -16,9 +16,9 @@
   "author": "David J. Hamilton <davidjh@hjdivad.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hjdivad/heimdalljs-logger/issues"
+    "url": "https://github.com/heimdalljs/heimdalljs-logger/issues"
   },
-  "homepage": "https://github.com/hjdivad/heimdalljs-logger#README.md",
+  "homepage": "https://github.com/heimdalljs/heimdalljs-logger#README.md",
   "keywords": [
     "javascript"
   ],
