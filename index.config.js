@@ -9,6 +9,7 @@ export default {
   format: 'cjs',
   external: [
     'heimdalljs',
+    'debug',
   ],
   plugins: [
     babel({ exclude: 'node_modules/**' }),
