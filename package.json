@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hjdivad/heimdalljs-logger.git"
+    "url": "git+https://github.com/heimdalljs/heimdalljs-logger.git"
   },
   "author": "David J. Hamilton <davidjh@hjdivad.com>",
   "license": "MIT",
