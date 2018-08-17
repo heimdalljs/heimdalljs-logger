@@ -40,6 +40,6 @@
   },
   "dependencies": {
     "debug": "^2.2.0",
-    "heimdalljs": "^0.2.0"
+    "heimdalljs": "^0.2.6"
   }
 }
